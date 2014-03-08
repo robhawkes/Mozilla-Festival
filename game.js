@@ -66,7 +66,7 @@ function onClientDisconnect() {
 	var removePlayer = playerById(this.id);
 
 	// Player not found
-	if (!removePlayer) {
+	if (removePlayer === false) {
 		util.log("Player not found: "+this.id);
 		return;
 	};
