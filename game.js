@@ -2,7 +2,10 @@
 ** NODE.JS REQUIREMENTS
 **************************************************/
 var util = require("util"),					// Utility resources (logging, object inspection, etc)
-	io = require("socket.io"),				// Socket.IO
+	io = require("socket.io")({
+		"transports": ["websocket"],
+		"log level": 2
+	}),				// Socket.IO
 	Player = require("./Player").Player;	// Player class
 
 
@@ -22,15 +25,6 @@ function init() {
 
 	// Set up Socket.IO to listen on port 8000
 	socket = io.listen(8000);
-
-	// Configure Socket.IO
-	socket.configure(function() {
-		// Only use WebSockets
-		socket.set("transports", ["websocket"]);
-
-		// Restrict log output
-		socket.set("log level", 2);
-	});
 
 	// Start listening for events
 	setEventHandlers();
@@ -93,7 +87,7 @@ function onNewPlayer(data) {
 		existingPlayer = players[i];
 		this.emit("new player", {id: existingPlayer.id, x: existingPlayer.getX(), y: existingPlayer.getY()});
 	};
-		
+
 	// Add new player to the players array
 	players.push(newPlayer);
 };
@@ -128,7 +122,7 @@ function playerById(id) {
 		if (players[i].id == id)
 			return players[i];
 	};
-	
+
 	return false;
 };
 
