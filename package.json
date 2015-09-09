@@ -1,0 +1,23 @@
+{
+  "name": "mozilla-festival",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Player.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georules/mozilla-festival.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/georules/mozilla-festival/issues"
+  },
+  "homepage": "https://github.com/georules/mozilla-festival#readme",
+  "dependencies": {
+    "socket.io": "^1.3.6",
+    "util": "^0.10.3"
+  }
+}
